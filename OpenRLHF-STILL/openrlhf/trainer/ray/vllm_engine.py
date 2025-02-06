@@ -85,11 +85,11 @@ def create_vllm_engines(
     num_engines: int,
     tensor_parallel_size: int,
     pretrain: str,
-    gpu_memory_utilization: float,
     seed: int,
     enable_prefix_caching: bool,
     enforce_eager: bool,
     max_model_len: int,
+    gpu_memory_utilization: float,
 ):
     vllm_engines = []
     # RAY_EXPERIMENTAL_NOSET_*_VISIBLE_DEVICES will always be set in current context,
@@ -121,12 +121,12 @@ def create_vllm_engines(
                 noset_visible_devices=noset_visible_devices,
                 trust_remote_code=True,
                 tensor_parallel_size=tensor_parallel_size,
-                gpu_memory_utilization=gpu_memory_utilization,
                 dtype="bfloat16",
                 seed=seed + i,
                 enable_prefix_caching=enable_prefix_caching,
                 enforce_eager=enforce_eager,
                 max_model_len=max_model_len,
+                gpu_memory_utilization=gpu_memory_utilization,
             )
         )
 
