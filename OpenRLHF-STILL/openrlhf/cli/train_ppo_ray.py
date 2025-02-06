@@ -152,6 +152,7 @@ def train(args):
             args.enforce_eager,
             max_len,
             args.gpu_memory_utilization,
+            args.max_num_seqs
         )
 
     ray.get(refs)
@@ -221,6 +222,12 @@ if __name__ == "__main__":
         type=float,
         default=0.9,
         help="Fraction of GPU memory to use for the vLLM execution",
+    )
+    parser.add_argument(
+        "--max_num_seqs",
+        type=int,
+        default=256,
+        help="Maximum number of sequences per iteration.",
     )
 
     # Checkpoints

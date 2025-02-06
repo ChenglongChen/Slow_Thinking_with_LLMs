@@ -90,6 +90,7 @@ def create_vllm_engines(
     enforce_eager: bool,
     max_model_len: int,
     gpu_memory_utilization: float,
+    max_num_seqs: int
 ):
     vllm_engines = []
     # RAY_EXPERIMENTAL_NOSET_*_VISIBLE_DEVICES will always be set in current context,
@@ -127,6 +128,7 @@ def create_vllm_engines(
                 enforce_eager=enforce_eager,
                 max_model_len=max_model_len,
                 gpu_memory_utilization=gpu_memory_utilization,
+                max_num_seqs=max_num_seqs
             )
         )
 
